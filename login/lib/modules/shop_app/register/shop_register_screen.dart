@@ -69,7 +69,7 @@ class ShopRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: nameController,
                           keyboardType: TextInputType.name,
-                          text: 'Name',
+                          label: 'Name',
                           prefix: Icons.person,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -82,7 +82,7 @@ class ShopRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
-                          text: 'Email Address',
+                          label: 'Email Address',
                           prefix: Icons.email,
                           validator: (value) {
                             if (value == null ||
@@ -97,7 +97,7 @@ class ShopRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
-                          text: 'Password',
+                          label: 'Password',
                           isPassword: ShopRegisterCubit.get(context).isPassword,
                           prefix: Icons.lock,
                           suffix: ShopRegisterCubit.get(context).suffix,
@@ -117,7 +117,7 @@ class ShopRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: phoneController,
                           keyboardType: TextInputType.phone,
-                          text: 'Phone',
+                          label: 'Phone',
                           prefix: Icons.phone,
                           validator: (value) {
                             if (value!.isEmpty) {

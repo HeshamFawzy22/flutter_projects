@@ -73,7 +73,7 @@ class ShopLoginScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
-                          text: 'Email Address',
+                          label: 'Email Address',
                           prefix: Icons.email,
                           validator: (value) {
                             if (value == null ||
@@ -88,7 +88,7 @@ class ShopLoginScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
-                          text: 'Password',
+                          label: 'Password',
                           isPassword: ShopLoginCubit.get(context).isPassword,
                           prefix: Icons.lock,
                           suffix: ShopLoginCubit.get(context).suffix,

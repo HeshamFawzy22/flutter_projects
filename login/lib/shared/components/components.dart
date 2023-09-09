@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:icon_broken/icon_broken.dart';
 import 'package:login/shared/cubit/cubit.dart';
-import '../../../models/shop_app_model/favorites_model.dart';
+
 import '../../../shared/styles/colors.dart';
 import '../../layout/news_app/cubit/cubit.dart';
 import '../../layout/news_app/cubit/states.dart';
@@ -12,7 +13,7 @@ import '../../modules/shop_app/cubit/cubit.dart';
 Widget defaultTextForm({
   required TextEditingController controller,
   required TextInputType keyboardType,
-  required String text,
+  required String label,
   required IconData prefix,
   required String? Function(String?)? validator,
   bool isPassword = false,
@@ -27,12 +28,18 @@ Widget defaultTextForm({
       keyboardType: keyboardType,
       obscureText: isPassword,
       decoration: InputDecoration(
-        labelText: text,
-        prefixIcon: Icon(prefix),
+        labelText: label,
+        prefixIcon: Icon(
+          prefix,
+          size: 18.0,
+        ),
         suffixIcon: suffix != null
             ? IconButton(
                 onPressed: suffixPressed,
-                icon: Icon(suffix),
+                icon: Icon(
+                  suffix,
+                  size: 18.0,
+                ),
               )
             : null,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
@@ -75,12 +82,24 @@ Widget defaultTextButton(
     onPressed: onPressed,
     child: Text(
       text.toUpperCase(),
-      style: const TextStyle(
-        fontSize: 12.0,
-      ),
+      style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
     ),
   );
 }
+
+PreferredSizeWidget defaultAppBar(
+        {BuildContext? context, String? title, List<Widget>? actions}) =>
+    AppBar(
+      title: Text(title!),
+      leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context!);
+        },
+        icon: const Icon(IconBroken.Arrow___Left_2),
+      ),
+      actions: actions,
+      titleSpacing: 0.0,
+    );
 
 Widget buildTaskItem(Map model, context) => Dismissible(
       key: Key(model['id'].toString()),

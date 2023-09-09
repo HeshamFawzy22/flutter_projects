@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   defaultTextForm(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    text: 'Email Address',
+                    label: 'Email Address',
                     prefix: Icons.email,
                     validator: (value) {
                       if (value == null ||
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   defaultTextForm(
                     controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
-                    text: 'Password',
+                    label: 'Password',
                     isPassword: isPassword,
                     prefix: Icons.lock,
                     suffix:

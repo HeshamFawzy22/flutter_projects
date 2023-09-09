@@ -29,7 +29,7 @@ class ShopCubit extends Cubit<ShopStates> {
   bool isPassword = true;
   IconData suffix = Icons.visibility;
   ChangeFavoritesModel? changeFavoritesModel;
-  late FavoritesModel favoritesModel;
+  FavoritesModel? favoritesModel;
 
   static ShopCubit get(context) => BlocProvider.of(context);
 

@@ -12,5 +12,9 @@ class SocialRegisterErrorState extends SocialRegisterStates {
   SocialRegisterErrorState(this.error);
 }
 
+class SocialUserCreateSuccessState extends SocialRegisterStates {}
+
+class SocialUserCreateErrorState extends SocialRegisterStates {}
+
 class SocialRegisterChangePasswordVisibilityState
     extends SocialRegisterStates {}

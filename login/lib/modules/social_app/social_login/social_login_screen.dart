@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import '../../../layout/social_app/social_layout.dart';
+import '../../../shared/network/local/cache_helper.dart';
 import '../social_register/social_register_screen.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -24,20 +26,15 @@ class SocialLoginScreen extends StatelessWidget {
       child: BlocConsumer<SocialLoginCubit, SocialLoginStates>(
         listener: (context, state) {
           if (state is SocialLoginSuccessState) {
-            // if (state.loginModel.status) {
-            //   CacheHelper.saveData(
-            //           key: 'token', value: state.loginModel.data.token)
-            //       .then((value) {
-            //     token = state.loginModel.data.token;
-            //     if (value!) {
-            //       navigateAndFinish(
-            //           context: context, widget: const SocialLayout());
-            //     }
-            //   });
-            // }
+            CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
+              if (value!) {
+                navigateAndFinish(
+                    context: context, widget: const SocialLayout());
+              }
+            });
           } else if (state is SocialLoginErrorState) {
             showToast(
-              msg: SocialLoginCubit.get(context).message,
+              msg: 'Email or Password is not correct',
               state: ToastStates.ERROR,
             );
           }
@@ -69,7 +66,7 @@ class SocialLoginScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
-                          text: 'Email Address',
+                          label: 'Email Address',
                           prefix: Icons.email,
                           validator: (value) {
                             if (value == null ||
@@ -84,7 +81,7 @@ class SocialLoginScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
-                          text: 'Password',
+                          label: 'Password',
                           isPassword: SocialLoginCubit.get(context).isPassword,
                           prefix: Icons.lock,
                           suffix: SocialLoginCubit.get(context).suffix,

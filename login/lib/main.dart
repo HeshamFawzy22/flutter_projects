@@ -6,7 +6,11 @@ import 'package:login/layout/news_app/cubit/cubit.dart';
 import 'package:login/layout/news_app/cubit_mode/cubit.dart';
 import 'package:login/layout/news_app/cubit_mode/states.dart';
 import 'package:login/layout/shop_app/shop_layout.dart';
+import 'package:login/layout/social_app/cubit/cubit.dart';
+import 'package:login/layout/social_app/social_layout.dart';
+import 'package:login/modules/basics_app/login/login_screen.dart';
 import 'package:login/modules/shop_app/login/shop_login_screen.dart';
+import 'package:login/modules/social_app/news_feed/news_feed_screen.dart';
 import 'package:login/modules/social_app/social_login/social_login_screen.dart';
 import 'package:login/shared/bloc_observer.dart';
 import 'package:login/shared/components/constants.dart';
@@ -25,20 +29,34 @@ void main() async {
 
   bool? isDark = CacheHelper.getData(key: 'isDark');
 
-  bool? onBoarding = CacheHelper.getData(key: 'onBoarding');
-  token = CacheHelper.getData(key: 'token');
+  // Shop App
+  // bool? onBoarding = CacheHelper.getData(key: 'onBoarding');
+  // token = CacheHelper.getData(key: 'token');
+  // Shop App
 
   Widget widget;
 
-  if (onBoarding != null) {
-    if (token != null) {
-      widget = const ShopLayout();
-    } else {
-      widget = ShopLoginScreen();
-    }
+  // Shop App
+  // if (onBoarding != null) {
+  //   if (token != null) {
+  //     widget = const ShopLayout();
+  //   } else {
+  //     widget = ShopLoginScreen();
+  //   }
+  // } else {
+  //   widget = OnBoardingScreen();
+  // }
+  // Shop App
+
+  //Social App
+
+  uId = CacheHelper.getData(key: 'uId');
+  if (uId != null) {
+    widget = SocialLayout();
   } else {
-    widget = OnBoardingScreen();
+    widget = SocialLoginScreen();
   }
+  //Social App
 
   if (isDark == null) {
     isDark = false;
@@ -77,6 +95,11 @@ class MyApp extends StatelessWidget {
             ..getFavoritesData()
             ..getUserData(),
         ),
+        BlocProvider(
+          create: (context) => SocialCubit()
+            ..getUserData()
+            ..getPosts(),
+        ),
       ],
       child: BlocConsumer<ModeCubit, ModeStates>(
         listener: (context, state) {},
@@ -88,7 +111,7 @@ class MyApp extends StatelessWidget {
             themeMode: ModeCubit.get(context).isDark
                 ? ThemeMode.dark
                 : ThemeMode.light,
-            home: SocialLoginScreen(),
+            home: start_widget,
           );
         },
       ),

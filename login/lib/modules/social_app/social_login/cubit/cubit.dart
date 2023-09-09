@@ -5,15 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login/modules/social_app/social_login/cubit/states.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:login/shared/network/end_points.dart';
-import 'package:login/shared/network/remote/DioHelper.dart';
-
 class SocialLoginCubit extends Cubit<SocialLoginStates> {
   SocialLoginCubit() : super(SocialInitialState());
 
   // late SocialLoginModel loginModel;
-  late bool status;
-  late String message;
+  // late bool status;
+  // late String message;
   bool isPassword = true;
   IconData suffix = Icons.visibility;
 
@@ -24,8 +21,7 @@ class SocialLoginCubit extends Cubit<SocialLoginStates> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
         .then((value) {
-      print(value.user?.email);
-      emit(SocialLoginSuccessState());
+      emit(SocialLoginSuccessState(value.user?.uid));
     }).catchError((error) {
       print(error.toString());
       emit(SocialLoginErrorState(error.toString()));

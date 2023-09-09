@@ -78,7 +78,7 @@ class ToDoLayout extends StatelessWidget {
                                 defaultTextForm(
                                   controller: titleController,
                                   keyboardType: TextInputType.text,
-                                  text: 'Task Title',
+                                  label: 'Task Title',
                                   prefix: Icons.title,
                                   validator: (value) {
                                     if (value!.isEmpty) {
@@ -91,7 +91,7 @@ class ToDoLayout extends StatelessWidget {
                                 defaultTextForm(
                                   controller: timeController,
                                   keyboardType: TextInputType.datetime,
-                                  text: 'Task Time',
+                                  label: 'Task Time',
                                   prefix: Icons.watch_later_outlined,
                                   onTap: () {
                                     showTimePicker(
@@ -114,7 +114,7 @@ class ToDoLayout extends StatelessWidget {
                                 defaultTextForm(
                                   controller: dateController,
                                   keyboardType: TextInputType.datetime,
-                                  text: 'Task Date',
+                                  label: 'Task Date',
                                   prefix: Icons.date_range,
                                   onTap: () {
                                     showDatePicker(

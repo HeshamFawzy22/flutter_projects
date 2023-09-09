@@ -23,7 +23,7 @@ class SearchScreen extends StatelessWidget {
                 child: defaultTextForm(
                   controller: searchController,
                   keyboardType: TextInputType.text,
-                  text: 'Search',
+                  label: 'Search',
                   prefix: Icons.search,
                   onchange: (value) {
                     NewsCubit.get(context).getSearch(value: value);

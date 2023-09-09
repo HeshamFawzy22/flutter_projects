@@ -20,13 +20,13 @@ class FavoritesScreen extends StatelessWidget {
               itemBuilder: (context, index) => buildShopItem(
                   ShopCubit.get(context)
                       .favoritesModel
-                      .data
+                      ?.data
                       .data[index]
                       .product,
                   context),
               separatorBuilder: (context, index) => myDivider(),
               itemCount:
-                  ShopCubit.get(context).favoritesModel.data.data.length),
+                  ShopCubit.get(context).favoritesModel!.data.data.length),
           fallback: (context) =>
               const Center(child: CircularProgressIndicator()),
         );

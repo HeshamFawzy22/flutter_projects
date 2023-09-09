@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login/layout/social_app/social_layout.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
 import '../../../shared/network/local/cache_helper.dart';
@@ -24,7 +25,8 @@ class SocialRegisterScreen extends StatelessWidget {
       create: (context) => SocialRegisterCubit(),
       child: BlocConsumer<SocialRegisterCubit, SocialRegisterStates>(
         listener: (context, state) {
-          if (state is SocialRegisterSuccessState) {
+          if (state is SocialUserCreateSuccessState) {
+            navigateAndFinish(context: context, widget: const SocialLayout());
             // if (state.loginModel.status) {
             //   CacheHelper.saveData(
             //           key: 'token', value: state.loginModel.data.token)
@@ -36,11 +38,6 @@ class SocialRegisterScreen extends StatelessWidget {
             //     }
             //   });
             // }
-          } else if (state is SocialRegisterErrorState) {
-            showToast(
-              msg: SocialRegisterCubit.get(context).message,
-              state: ToastStates.ERROR,
-            );
           }
         },
         builder: (context, state) {
@@ -67,7 +64,7 @@ class SocialRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: nameController,
                           keyboardType: TextInputType.name,
-                          text: 'Name',
+                          label: 'Name',
                           prefix: Icons.person,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -80,7 +77,7 @@ class SocialRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
-                          text: 'Email Address',
+                          label: 'Email Address',
                           prefix: Icons.email,
                           validator: (value) {
                             if (value == null ||
@@ -95,7 +92,7 @@ class SocialRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
-                          text: 'Password',
+                          label: 'Password',
                           isPassword:
                               SocialRegisterCubit.get(context).isPassword,
                           prefix: Icons.lock,
@@ -116,7 +113,7 @@ class SocialRegisterScreen extends StatelessWidget {
                         defaultTextForm(
                           controller: phoneController,
                           keyboardType: TextInputType.phone,
-                          text: 'Phone',
+                          label: 'Phone',
                           prefix: Icons.phone,
                           validator: (value) {
                             if (value!.isEmpty) {

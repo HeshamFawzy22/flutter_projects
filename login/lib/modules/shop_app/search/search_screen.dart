@@ -30,7 +30,7 @@ class SearchScreen extends StatelessWidget {
                     defaultTextForm(
                       controller: searchController,
                       keyboardType: TextInputType.text,
-                      text: 'Search',
+                      label: 'Search',
                       prefix: Icons.search,
                       validator: (value) {
                         if (value == null) {

@@ -7,14 +7,15 @@ import 'colors.dart';
 ThemeData lightThem = ThemeData(
   primarySwatch: default_color,
   scaffoldBackgroundColor: Colors.white,
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     titleSpacing: 20.0,
-    iconTheme: const IconThemeData(
+    iconTheme: IconThemeData(
       color: Colors.black,
     ),
     backgroundColor: Colors.white,
     elevation: 0.0,
-    titleTextStyle: const TextStyle(
+    titleTextStyle: TextStyle(
+      fontFamily: 'Janna',
       color: Colors.black,
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
@@ -36,6 +37,12 @@ ThemeData lightThem = ThemeData(
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
+    bodyMedium: TextStyle(
+      fontSize: 14.0,
+      height: 1.3,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
   ),
 );
 ThemeData darkThem = ThemeData(
@@ -43,12 +50,13 @@ ThemeData darkThem = ThemeData(
   scaffoldBackgroundColor: HexColor('333739'),
   appBarTheme: AppBarTheme(
     titleSpacing: 20.0,
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: Colors.white,
     ),
     backgroundColor: HexColor('333739'),
     elevation: 0.0,
-    titleTextStyle: TextStyle(
+    titleTextStyle: const TextStyle(
+      fontFamily: 'Janna',
       color: Colors.white,
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
@@ -66,6 +74,12 @@ ThemeData darkThem = ThemeData(
   textTheme: const TextTheme(
     bodyLarge: TextStyle(
       fontSize: 18.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 14.0,
+      height: 1.3,
       fontWeight: FontWeight.w600,
       color: Colors.white,
     ),

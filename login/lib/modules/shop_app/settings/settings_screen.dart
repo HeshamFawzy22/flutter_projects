@@ -42,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
                     defaultTextForm(
                       controller: nameController,
                       keyboardType: TextInputType.name,
-                      text: 'Name',
+                      label: 'Name',
                       prefix: Icons.person,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -57,7 +57,7 @@ class SettingsScreen extends StatelessWidget {
                     defaultTextForm(
                       controller: emailController,
                       keyboardType: TextInputType.text,
-                      text: 'Email',
+                      label: 'Email',
                       prefix: Icons.email,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -72,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
                     defaultTextForm(
                       controller: phoneController,
                       keyboardType: TextInputType.text,
-                      text: 'Phone',
+                      label: 'Phone',
                       prefix: Icons.phone,
                       validator: (value) {
                         if (value!.isEmpty) {
